@@ -50,7 +50,7 @@ class PasswordGeneratorGUI:
         # Fortaeza de la contraseña label
         self.strength_label = tk.Label(ventana, text="")
         self.strength_label.pack(padx=10, pady=5)
-        # Entrada de la contraseña
+        # Mostrar la contraseña en un entry
         self.MostrarCon = tk.StringVar()
         self.ContEnt = tk.Entry(ventana, textvariable=self.MostrarCon, width=30)
         self.ContEnt.pack(padx=10, pady=5)
