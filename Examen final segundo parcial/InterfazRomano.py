@@ -8,7 +8,7 @@ class Convertidor:
         ventana.title("Conversor Romano a decimal")
         ventana.geometry("800x600")
 
-        self.label1 = tk.Label(ventana, font=("Helvetica",15), text="Ingrese un número romano entre 1 y 50:")
+        self.label1 = tk.Label(ventana, font=("Helvetica",15), text="Error ingrese un número romano entre 1 y 50:")
         self.label1.pack(padx=10, pady=5, fill=tk.X)
 
         self.numero1 = tk.Entry(ventana, font=("Helvetica",30))
@@ -27,7 +27,7 @@ class Convertidor:
         self.botonCon2.pack(padx=10, pady=5, fill=tk.X)
 
         self.resultado = tk.StringVar()
-        self.label3 = tk.Label(ventana, font=("Helvetica",30), textvariable=self.resultado)
+        self.label3 = tk.Label(ventana, font=("Helvetica",15), textvariable=self.resultado)
         self.label3.pack(padx=10, pady=5, fill=tk.X)
 
     def RomanoDecimal(self):
@@ -40,12 +40,15 @@ class Convertidor:
 
         roman_converter = Numeros()
         
+        # Obtener el valor numérico del número romano ingresado
+        arabigo = roman_converter.RomanoArabigo(valor)
+
         # Validar que el número romano se encuentra en el rango de 1 a 50
-        if roman_converter.RomanoArabigo(valor) < 1 or roman_converter.RomanoArabigo(valor) > 50:
-            self.resultado.set("Ingrese un número romano válido entre 1 y 50")
+        if arabigo is None or arabigo < 1 or arabigo > 50:
+            self.resultado.set("Error, ingrese un número romano válido entre 1 y 50")
             return
 
-        resultado = roman_converter.RomanoArabigo(valor)
+        resultado = arabigo
 
         messagebox.showinfo("Numero Decimal", resultado)
 
